@@ -1,0 +1,172 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+
+//COLORS
+$color-orange: hsl(31, 77%, 52%);
+$color-cyan: hsl(184, 100%, 22%);
+$color-dark-cyan: hsl(179, 100%, 13%);
+$color-paragraphs: hsla(0, 0%, 100%, 0.75);
+$color-background: hsl(0, 0%, 95%);
+
+//RESPONSIVE MANAGER
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 50em) {
+			@content;
+		}
+	}
+	@if $breakpoint == bigdt {
+		@media (max-width: 57.5em) {
+			@content;
+		}
+	}
+}
+
+//RESET and SET 1REM to 10PX;
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+
+    @include respond(bigdt) {
+        font-size: 55%;
+    }
+
+    @include respond(phone) {
+        font-size: 62.5%;
+    }
+}
+
+//MAIN STYLING STARTS HERE
+body {
+	box-sizing: border-box;
+	font-family: 'Lexend Deca', sans-serif;
+	font-size: 1.5rem;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background: $color-background;
+
+    @include respond(phone) {
+        height: auto;
+        margin-top: 10rem;
+    }
+}
+
+.container {
+	min-width: 65%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 50rem;
+	border-radius: 1rem;
+	overflow: hidden;
+
+    @include respond(phone) {
+        min-width: max-content;
+        grid-template-columns: 1fr;
+        margin-bottom: 7rem;
+        grid-auto-rows: max-content;
+    }
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: 4rem;
+	padding-bottom: 6rem;
+    @include respond(phone) {
+        padding-bottom: 4rem;
+    }
+
+	&:first-child {
+		background: $color-orange;
+	}
+
+	&:nth-child(2) {
+		background: $color-cyan;
+	}
+
+	&:last-child {
+		background: $color-dark-cyan;
+	}
+
+	&__image {
+		width: 7rem;
+		margin-bottom: 4rem;
+	}
+
+	&__header {
+		font-family: 'Big Shoulders Display', sans-serif;
+		color: $color-background;
+		font-size: 4rem;
+		text-transform: uppercase;
+		margin-bottom: 4rem;
+	}
+
+	&__text {
+		color: $color-paragraphs;
+		line-height: 2.5rem;
+		width: 23ch;
+	}
+
+	&__footer {
+		margin-top: auto;
+        @include respond(phone) {
+            margin: 0;
+            margin-top: 3rem;
+        }
+	}
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background: $color-background;
+    padding: 1.5rem 3rem;
+    border-radius: 100vh;
+    border: 3px solid $color-background;
+}
+
+.btn-orange {
+color: $color-orange;
+}
+
+.btn-orange:hover {
+    color: $color-background;
+    background: $color-orange;
+}
+.btn-cyan {
+color: $color-cyan;
+}
+
+.btn-cyan:hover {
+    color: $color-background;
+    background: $color-cyan;
+}
+.btn-cyan-dark {
+color: $color-dark-cyan;
+}
+
+.btn-cyan-dark:hover {
+    color: $color-background;
+    background: $color-dark-cyan;
+}
+
+.attribution {
+	position: absolute;
+	bottom: 1rem;
+    color: $color-dark-cyan;
+
+    & > a {
+        text-decoration: none;
+        color: $color-orange;
+    }
+}
